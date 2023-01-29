@@ -44,7 +44,7 @@ const Order = () => {
 
 
 
-<button className='cartBtn text-xl px-10'> Add to Cart </button>
+<button className='cartBtn text-xl'> Add to Cart </button>
 
 </ul>
 

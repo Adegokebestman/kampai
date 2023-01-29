@@ -5,7 +5,7 @@ import { BsChatLeft } from "react-icons/bs";
 import { RiNotification3Line } from "react-icons/ri";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
-
+import { Link } from "react-router-dom";
 import avatar from "../data/avatar.jpg";
 import { Cart, Chat, Notification, UserProfile, Settings } from ".";
 import { useStateContext } from "../contexts/ContextProvider";
@@ -108,12 +108,12 @@ const Navbar = () => {
           color={currentColor}
           icon={<img src={notification} alt={notification} />}
         />
-        <NavButton className="inline-block"
+        {/* reworked on the Cart btn */}
+        <Link to='./Order' className="inline-block mt-2"
           title="Cart"
           customFunc={() => handleClick("cart")}
-          color={currentColor}
-          icon={<img src={cart} alt={cart} />}
-        />
+          color={currentColor}> <img src={cart} alt={cart} /> </Link>
+
         <NavButton className="inline-block"
           title="Settings"
           dotColor="#03C9D7"
@@ -140,7 +140,7 @@ const Navbar = () => {
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </TooltipComponent>
-        {isClicked.cart && <Order />}
+
         {isClicked.notification && <Notification />}
         {isClicked.settings && <Settings />}
         {isClicked.userProfile && <UserProfile />}

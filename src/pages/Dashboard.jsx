@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FiMail } from 'react-icons/fi';
 import {FaEdit} from 'react-icons/fa';
 import {BiCurrentLocation} from 'react-icons/bi';
 import { useStateContext } from '../contexts/ContextProvider';
 import { earningData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
-import { Button } from '../components'
+import { Button } from '../components';
 
 const Dashboard = () => {
   return (
@@ -16,8 +17,9 @@ const Dashboard = () => {
 <p className='font-bold text-2xl'> Welcome, Jannet</p>
 
 <div>
+<Link to="/Inventory">
 <Button color="white" bgColor="#FF7E20" text="CHECK YOUR INVENTORY" borderRadius="10px"  />
-
+</Link>
 
 </div>
 </div>

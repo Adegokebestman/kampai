@@ -10,6 +10,11 @@ export default function MyModal({visible, onClose}) {
   const [page, setPage] = useState(0);
 
     const FormTitles = ["Shipping Information", "Payment"];
+
+    const setTime = ["Preferred Time & Date"]
+
+    const DetailsTitles = ["Use Default Info", "Use Account Information"]
+
     const [FormData, setFormData] = useState({
       name: "",
       street: "",
@@ -46,11 +51,14 @@ return <UserPayment FormData={FormData} setFormData={setFormData}  />
         <h1 className="font-semibold text-center  mb-4 text-2xl text-[#5B5856]">
         {FormTitles[page]}
         </h1>
-        <div className="px-10 py-2 flex flex-col font-semibold text-2xl bg-[#FFF1E8]">
-      <span className="text-[#FF7E20]"> <TbCalendarTime/> Prefered Date & Time</span>
+        <div className="px-10 py-2 flex flex-col  font-semibold text-2xl ">
+      <span className="text-[#FF7E20] px-4 flex justify-between py-2 bg-[#FFF1E8]">
+
+       <TbCalendarTime className="mr-4"/>
+         { setTime[page]}</span>
         </div>
         {/* USE DEFAULT INFO */}
-        <button className='cartBtn text-xl px-10'> Use Default Info </button>
+        <button className='cartBtn text-xl px-10'> {DetailsTitles[page]} </button>
         </div>
         {/* <div className="date text-orange-400 ">
     <span className="">

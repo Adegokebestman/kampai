@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import apple from '../data/apple.png';
 
 const UserPayment = ({FormData, setFormData}) => {
   return (
@@ -17,9 +18,9 @@ const UserPayment = ({FormData, setFormData}) => {
 
 <select class="form-select text-gray-600 dark:text-gray-400 focus:outline-none  focus:ring-offset-2  mb-4  dark:border-gray-700 dark:bg-gray-800 bg-white font-normal w-2/4 h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow">
                 <option selected className='text-gray-400'>Select Payment Method</option>
-                <option>Operating System</option>
-                <option>Web Development</option>
-                <option>Competitive Programming</option>
+                <option>VISA</option>
+                <option>APPLE PAY</option>
+                <option>MASTERCARD</option>
               </select>
     </div>
   )
