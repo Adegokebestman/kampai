@@ -1,15 +1,26 @@
 import React from 'react'
 import {TbTruckDelivery} from 'react-icons/tb';
 import {IoIosArrowBack} from 'react-icons/io';
+import { Link } from 'react-router-dom';
+
 const Myorder = () => {
   return (
 <div className='mt-10'>
-<button className=" flex flex-wrap lg:flex-nowrap justify-start  pb-2 mb-8 ml-12 sidebar  pt-2 rounded-lg border border-white p-4 bg-white">
-  <IoIosArrowBack className='text-2xl '/> <p className='font-semibold'>  Order Tracking </p>
+<div class=" grid grid-rows-1 grid-flow-col gap-4 justify-start ml-12 items-center">
 
-</button>
+<div>
 
-<div class="flex flex-wrap lg:flex-nowrap justify-center">
+<button className='font-medium mr-4 text-black text-2xl border border-white sidebar rounded-lg p-2'>
+<Link to='/' >
+<IoIosArrowBack/>
+</Link>
+ </button>
+ <p className='font-semibold text-2xl inline-block ml-2'>
+   Order Tracking </p>
+  </div>
+</div>
+
+<div class="mt-10 flex flex-wrap lg:flex-nowrap justify-center">
 <div class="bg-white sidebar dark:text-gray-200 dark:bg-secondary-dark-bg h-22 rounded-xl w-80 lg:w-11/12 p-8 pt-9 m-3 ">
 <div class="flex font-semibold justify-between items-center">
 <TbTruckDelivery className='text-[#FF7E20] text-4xl'/>
@@ -20,7 +31,9 @@ const Myorder = () => {
 </div>
 <div>
 
+<Link to='../OrderTrack'>
 <button className=" text-white bg-[#FF7E20] px-10 p-3 hover:drop-shadow-xl">Track Order</button>
+</Link>
 
 </div>
 </div>

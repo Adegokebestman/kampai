@@ -51,13 +51,15 @@ const Dashboard = () => {
  ))}
 
     </div>
-
     <div className='flex justify-end float-right font-semibold rounded-full mt-8 mr-16 pr-10 bg-white sidebar items-center'>
+
     <BiCurrentLocation className='text-4xl m-8 text-[#FF7E20]' />
 
 <div>
-<Button className="m-12" color="white" bgColor="#FF7E20" text=" Track Order" borderRadius="10px" />
+<Link to="../Myorder">
 
+<Button className="m-12" color="white" bgColor="#FF7E20" text=" Track Order" borderRadius="10px" />
+</Link>
 
 </div>
 

@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from 'react';
-import { productList } from '../data/dummy';
 
 const StateContext = createContext();
 
@@ -10,32 +9,32 @@ const initialState = {
   notification: false,
 };
 
-const getDefaultCart =() => {
-  let cart = {};
-  for (let i = 1; i < productList.length + 1; i++) {
-    cart[i] = 0
-  }
-  return cart;
-};
+// const getDefaultCart =() => {
+//   let cart = {};
+//   for (let i = 1; i < productList.length + 1; i++) {
+//     cart[i] = 0
+//   }
+//   return cart;
+// };
 
-export const ContextProvider = ({ children }) => {
+export const ContextProvider = ({children}) => {
   const [screenSize, setScreenSize] = useState(undefined);
   const [currentColor, setCurrentColor] = useState('#000000');
   const [currentMode, setCurrentMode] = useState('Light');
   const [themeSettings, setThemeSettings] = useState(false);
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
-  const [cartItems, setCartItems] = useState(getDefaultCart());
+  // const [cartItems, setCartItems] = useState(getDefaultCart());
 
   // add to cart
-  const addToCart = (itemId) => {
-setCartItems((prev) => ({...prev, [itemId] : prev[itemId] + 1}))
-  };
+//   const addToCart = (itemId) => {
+// setCartItems((prev) => ({...prev, [itemId] : prev[itemId] + 1}))
+//   };
 
-  // Remove from cart
-  const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({...prev, [itemId] : prev[itemId] - 1}))
-      };
+//   // Remove from cart
+//   const removeFromCart = (itemId) => {
+//     setCartItems((prev) => ({...prev, [itemId] : prev[itemId] - 1}))
+//       };
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
@@ -51,9 +50,10 @@ setCartItems((prev) => ({...prev, [itemId] : prev[itemId] + 1}))
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <StateContext.Provider value={{addToCart, cartItems, removeFromCart, currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, setThemeSettings }}>
+    <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, setThemeSettings }}>
       {children}
     </StateContext.Provider>
+
   );
 };
 

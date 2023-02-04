@@ -1,10 +1,10 @@
 import React from 'react';
 import { AiOutlineCalendar, AiOutlineShoppingCart, AiOutlineAreaChart, AiOutlineBarChart, AiOutlineStock } from 'react-icons/ai';
-import { FiShoppingBag, FiEdit, FiPieChart, FiBarChart, FiCreditCard, FiStar, FiShoppingCart } from 'react-icons/fi';
-import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft } from 'react-icons/bs';
+import { FiShoppingBag,FiPackage, FiEdit, FiPieChart, FiBarChart, FiCreditCard, FiStar, FiShoppingCart } from 'react-icons/fi';
+import { BsKanban,BsTruck, BsClipboardCheck, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft } from 'react-icons/bs';
 import { BiColorFill } from 'react-icons/bi';
 import { IoMdContacts } from 'react-icons/io';
-import {BsChatLeftText} from 'react-icons/bs';
+import {BsChatLeftText, BsCheck2Circle} from 'react-icons/bs';
 import {GoChecklist} from 'react-icons/go';
 import {RxDashboard} from 'react-icons/rx';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
@@ -509,6 +509,27 @@ export const links = [
   },
 ];
 
+export const OrderTracking  = [
+  {
+    name: 'Shipment Confirmed',
+    icon:  <BsCheck2Circle/>,
+  },
+   {
+    name: 'Shipment has been Packaged',
+    icon: <FiPackage />,
+  },
+  {
+    name: 'Shipment departed to destination',
+    icon: <BsTruck />,
+  },
+  {
+    name: 'Shipment Arrived',
+    icon: <BsClipboardCheck />
+  }
+
+
+]
+
 export const productList = [
   {
     id:2,
@@ -529,7 +550,7 @@ price: '$250',
 quantity: '2000',
 },
 {
-  id:2,
+  id:3,
   image:
 pro1,
 name: 'Grey Goose Vodka',
@@ -538,7 +559,7 @@ price: '$250',
 quantity: '2000',
 },
 {
-  id:3,
+  id:8,
   image:
 pro3,
 name: 'Grey Goose Vodka',
@@ -581,6 +602,8 @@ export const cartData = [
     price: '$190',
   },
 ];
+
+
 
 export const chatData = [
   {

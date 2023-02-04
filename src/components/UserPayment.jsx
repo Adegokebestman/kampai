@@ -17,7 +17,7 @@ const UserPayment = ({FormData, setFormData}) => {
  value={FormData.surname} onChange={(event) => setFormData({...FormData, surname: event.target.value})} />
 
 <select class="form-select text-gray-600 dark:text-gray-400 focus:outline-none  focus:ring-offset-2  mb-4  dark:border-gray-700 dark:bg-gray-800 bg-white font-normal w-2/4 h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow">
-                <option selected className='text-gray-400'>Select Payment Method</option>
+                <option className='text-gray-400'>Select Payment Method</option>
                 <option>VISA</option>
                 <option>APPLE PAY</option>
                 <option>MASTERCARD</option>

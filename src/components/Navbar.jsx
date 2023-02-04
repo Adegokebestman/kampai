@@ -114,13 +114,18 @@ const Navbar = () => {
           customFunc={() => handleClick("cart")}
           color={currentColor}> <img src={cart} alt={cart} /> </Link>
 
-        <NavButton className="inline-block"
+<Link to='./MySettings' className="inline-block mt-2"
+          title="Settings"
+          customFunc={() => handleClick("cart")}
+          color={currentColor}> <img src={settings} alt={settings} /> </Link>
+
+        {/* <NavButton className="inline-block"
           title="Settings"
           dotColor="#03C9D7"
-          customFunc={() => handleClick("chat")}
+          customFunc={() => handleClick("setting")}
           color={currentColor}
           icon={<img src={settings} alt={settings} />}
-        />
+        /> */}
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
@@ -140,9 +145,8 @@ const Navbar = () => {
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </TooltipComponent>
-
         {isClicked.notification && <Notification />}
-        {isClicked.settings && <Settings />}
+        {isClicked.setting && <Settings />}
         {isClicked.userProfile && <UserProfile />}
       </div>
 

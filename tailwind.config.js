@@ -16,6 +16,7 @@ module.exports = {
           'secondary-dark-bg': '#33373E',
           'light-gray': '#F8F8F8',
           'half-transparent': 'rgba(0, 0, 0, 0.5)',
+          'darkGreen' : 'linear-gradient(180deg, #147D30 0%, #11CA42 100%)',
         },
         borderWidth: {
           1: '1px',

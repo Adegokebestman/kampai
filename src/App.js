@@ -4,30 +4,18 @@ import {FiSettings} from 'react-icons/fi';
 import {TooltipComponent} from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Dashboard, Order, Calender, Cusomers, CheckOut, Message, Inventory, Myorder } from './pages';
+import { Dashboard, Order, ShipAddress, PaymentMethod, CheckOut, Message, Inventory, Myorder, MySettings, OrderTrack } from './pages';
 import { useStateContext } from './contexts/ContextProvider';
-
 import './App.css';
 
 const App = () => {
   const { activeMenu } = useStateContext();
   return (
     <div>
+
       <BrowserRouter>
+
     <div className="flex relative dark:bg-main-dark-bg">
-    {/* <div className="fixed right-4 bottom-4" style={{ zindex: '1000'}}>
-    <TooltipComponent content="Settings" position='Top' >
-
-    <button type="button" className="text-3xl p-3 hover:drop-shadow-xl
-    hover:bg-light-gray text-white" style={{ background:'blue',
-    borderRadius:'50%' }}>
-
-      <FiSettings />
-    </button>
-
-    </TooltipComponent>
-
-    </div> */}
 
 {/* If the Menu/ Sidebar is active or not */}
 {activeMenu ? (
@@ -63,10 +51,17 @@ const App = () => {
     <Route path="/inventory" element={<Inventory />} />
     <Route path="/order" element={<Order />} />
     <Route path="/myorder" element={<Myorder />} />
+    <Route path="/mysettings" element={<MySettings />} />
+    <Route path="/paymentmethod" element={<PaymentMethod />} />
+    <Route path="/shipaddress" element={<ShipAddress />} />
+    <Route path="/ordertrack" element={<OrderTrack />} />
+
+
 </Routes>
     </div>
     </div>
      </div>
+
       </BrowserRouter>
     </div>
   )
