@@ -31,7 +31,7 @@ const Dashboard = () => {
 
 
 </div>
-<div className='flex m-3 flex-wrap justify-center gap-24 items-center'>
+<div className='flex m-3 flex-wrap justify-center gap-20 items-center'>
       {/* check database to accept input */}
   {earningData.map((item) =>(
     <div key={item.title} className="bg-white text-center sidebar dark:text-gray-200 dark:bg-secondary-dark-bg md:w-72 h-72 p-4 pt-20 rounded-2xl">
