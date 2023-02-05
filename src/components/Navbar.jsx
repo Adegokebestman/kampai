@@ -128,26 +128,25 @@ const Navbar = () => {
         /> */}
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
-            className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={() => handleClick("userProfile")}
+            className="flex items-center gap-2 p-1 hover:bg-light-gray rounded-lg"
+            // onClick={() => handleClick("userProfile")}
           >
             <img
               className="rounded-full w-12 h-12"
               src={avatar}
               alt="user-profile"
             />
-            <p>
+            {/* <p>
               <span className="text-gray-400 text-14">Hi,</span>{" "}
               <span className="text-gray-400 font-bold ml-1 text-14">
                 Jannet
               </span>
             </p>
-            <MdKeyboardArrowDown className="text-gray-400 text-14" />
+            <MdKeyboardArrowDown className="text-gray-400 text-14" /> */}
           </div>
         </TooltipComponent>
         {isClicked.notification && <Notification />}
         {isClicked.setting && <Settings />}
-        {isClicked.userProfile && <UserProfile />}
       </div>
 
 

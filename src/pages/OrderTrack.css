@@ -84,9 +84,7 @@
 	 color: #2b2862;
 }
  .timeline .box .container .cards .card p {
-	 font-family: Open Sans;
 	 font-style: normal;
-	 font-weight: normal;
 	 font-size: 16px;
 	 line-height: 22px;
 	 margin-left: 25px;
@@ -133,8 +131,6 @@
   padding-bottom: 20px;
 }
 
-.eta h3{
-}
 
 .rap{
   gap: 4rem;

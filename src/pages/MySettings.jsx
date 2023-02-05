@@ -28,7 +28,7 @@ function MySettings() {
   <div className='justify-center flex'>
 
   <button className='font-medium pl-10 ml-40 mr-40 w-2/4  text-[#AF501A] text-2xl border border-[#AF501A] rounded-lg p-4'>
-  <Link to=''>
+  <Link to='../UserInfo'>
    Personal Infromation
    </Link></button> </div>
 
@@ -37,13 +37,15 @@ function MySettings() {
   <button className='font-medium pl-10 ml-40 mr-40 w-2/4  text-[#AF501A] text-2xl border border-[#AF501A] rounded-lg p-4'>
   <Link to=''>
    Chronology of Orders
-   </Link></button> </div>
+   </Link></button>
+    </div>
+    <Link to='../PaymentMethod'>
+
   <div className='justify-center flex'>
 
   <button className='font-medium pl-10 ml-40 mr-40 w-2/4  text-[#AF501A] text-2xl border border-[#AF501A] rounded-lg p-4'>
-  <Link to='../PaymentMethod'>
    Payment Method
-   </Link></button> </div>
+   </button></div> </Link>
   <div className='justify-center flex'>
 
   <button className='font-medium pl-10 ml-40 mr-40 w-2/4  text-[#AF501A] text-2xl border border-[#AF501A] rounded-lg p-4'>

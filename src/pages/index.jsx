@@ -10,7 +10,7 @@ export { default as PaymentMethod } from './PaymentMethod';
 export { default as CheckOut } from './CheckOut';
 export { default as ShipAddress } from './ShipAddress';
 export { default as MySettings } from './MySettings';
-// export { default as Bar } from './Charts/Bar';
+export { default as UserInfo } from './UserInfo';
 // export { default as ColorMapping } from './Charts/ColorMapping';
 // export { default as Financial } from './Charts/Financial';
 // export { default as Line } from './Charts/Line';

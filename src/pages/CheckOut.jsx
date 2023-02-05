@@ -44,9 +44,13 @@ return <UserPayment FormData={FormData} setFormData={setFormData}  />
     <div id="container" onClick={handleOnClose} className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center">
       <div className="bg-white p-2 rounded w-2/4">
      <div className=" flex flex-col justify-center items-center">
-      <div className='progressbar mt-4  '>
+      <div className='progressbar mt-4 flex max-w-xs space-x-3 '>
+
           <div style={{width: page === 0 ? "50%"  : "100%"}}> </div>
         </div>
+
+
+
 
         <h1 className="font-semibold text-center  mb-4 text-2xl text-[#5B5856]">
         {FormTitles[page]}

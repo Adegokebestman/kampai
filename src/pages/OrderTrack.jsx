@@ -24,7 +24,7 @@ const OrderTrack = () => {
 <div>
 
 <button className='font-medium mr-4 text-black text-2xl border border-white sidebar rounded-lg p-2'>
-<Link to='/' >
+<Link to='../MyOrder' >
 <IoIosArrowBack/>
 </Link>
  </button>
@@ -76,7 +76,7 @@ const OrderTrack = () => {
             <div class="dot"></div>
           </div>
 
-          <div class="cards">
+          <div class="cards font-semibold">
             <div class=" flex card border-2 border-[#FF7E20]">
 
               <div className=' border bg-[#FF7E20]  w-14 h-14 p-2  -ml-8 -mt-6  text-white rounded-full'>
