@@ -31,7 +31,7 @@ const Sidebar = () => {
   gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight
   dark:text-white text-slate-900" >
     {/* LOGO */}
-    {/* <img src={kampai} alt={kampai} /> */}
+    <img src={kampai} alt={kampai} className=" md:hidden"/>
   </Link>
     <TooltipComponent content="Menu" position="BottomCenter">
     <button type='button' onClick={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} className="text-xl

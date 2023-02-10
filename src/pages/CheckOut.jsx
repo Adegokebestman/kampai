@@ -41,8 +41,8 @@ return <UserPayment FormData={FormData} setFormData={setFormData}  />
   if(!visible) return null;
 
   return (
-    <div id="container" onClick={handleOnClose} className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center">
-      <div className="bg-white p-2 rounded w-2/4">
+    <div id="container" onClick={handleOnClose} className="absolute md:fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center">
+      <div className="bg-white p-2 rounded w-3/4 md:w-2/4">
      <div className=" flex flex-col justify-center items-center">
       <div className='progressbar mt-4 flex max-w-xs space-x-3 '>
 
@@ -52,17 +52,17 @@ return <UserPayment FormData={FormData} setFormData={setFormData}  />
 
 
 
-        <h1 className="font-semibold text-center  mb-4 text-2xl text-[#5B5856]">
+        <h1 className="font-semibold text-center  mb-4 text-xl md:text-2xl text-[#5B5856]">
         {FormTitles[page]}
         </h1>
-        <div className="px-10 py-2 flex flex-col  font-semibold text-2xl ">
-      <span className="text-[#FF7E20] px-4 flex justify-between py-2 bg-[#FFF1E8]">
+        <div className="px-10 py-2 flex flex-col  font-semibold text-xl md:text-2xl ">
+      <span className="text-[#FF7E20] md:px-4 flex justify-between md:py-2 bg-[#FFF1E8]">
 
        <TbCalendarTime className="mr-4"/>
          { setTime[page]}</span>
         </div>
         {/* USE DEFAULT INFO */}
-        <button className='cartBtn text-xl px-10'> {DetailsTitles[page]} </button>
+        <button className='cartBtn  text-lg md:text-xl px-10'> {DetailsTitles[page]} </button>
         </div>
         {/* <div className="date text-orange-400 ">
     <span className="">

@@ -3,6 +3,27 @@
 .sidebar {
   box-shadow: rgb(113 122 131 / 11%) 0px 7px 30px 0px;
 }
+/* box shadow and likes */
+.sidebar {
+  box-shadow: rgb(113 122 131 / 11%) 0px 7px 30px 0px;
+}
+
+.boxShadow{
+  box-shadow: rgb(113 122 131 / 11%) 0px 7px 30px 0px;
+
+}
+
+@media only screen and (min-width: 768px) {
+  .boxShadow{
+    background-color: white !important;
+  }
+}
+
+
+
+
+
+/* ends here */
 .nav-item,
 .navbar {
   z-index: 10000;
@@ -10,6 +31,11 @@
 @media  screen and (max-width:800px) {
   .sidebar{
     z-index: 10000000;
+    background-color: white !important;
+
+  }
+  .main-logo{
+display: none;
   }
 }
 

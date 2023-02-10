@@ -7,13 +7,14 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { Link } from "react-router-dom";
 import avatar from "../data/avatar.jpg";
-import { Cart, Chat, Notification, UserProfile, Settings } from ".";
+import { Cart, Chat, UserProfile, Settings } from ".";
 import { useStateContext } from "../contexts/ContextProvider";
 import kampai from '../data/kampai.svg';
 import notification from '../data/notification.svg';
  import cart from '../data/cart.svg';
  import settings from '../data/settings.svg';
 import { Order } from "../pages";
+import Notification from "../pages";
 
 
 
@@ -69,13 +70,14 @@ const Navbar = () => {
     <div className=" flex mt-2 justify-around p-2 md:ml-6 md:mr-6 ">
 
       <div className="">
-      <img className="" src={kampai} alt={kampai} />
+      <img className="main-logo" src={kampai} alt={kampai} />
 </div>
-<form className="max-w-sm mr-14 ml-14 px-4 ">
+
+<form className=" md:max-w-sm md:mr-14 md:ml-14 md:px-4 ">
         <div className="relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="absolute top-0 bottom-0 w-6 h-6 my-auto text-[#EBAF8D] left-3"
+          className="absolute top-0 bottom-0 w-4 h-4 md:w-6 md:h-6 my-auto text-[#EBAF8D] left-3"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -89,8 +91,8 @@ const Navbar = () => {
         </svg>
           <input
             type="text"
-            placeholder="Search"
-            className=" py-3 pl-12 pr-40 text-black border border-[#AF501A] rounded-md outline-[#AF501A] bg-white-50 focus:bg-white focus:border-indigo-600"
+            placeholder="search"
+            className=" py-3 pl-8 md:pl-12 md:pr-40 text-black border border-[#AF501A] rounded-md outline-[#AF501A] bg-white-50 focus:bg-white focus:border-indigo-600"
           />
         </div>
       </form>
@@ -101,23 +103,29 @@ const Navbar = () => {
         icon={<AiOutlineMenu />}
       />
 
-        <NavButton className="inline-block"
+        {/* <Navbutton className="inline-block"
           title="Notification"
           dotColor="rgb(254, 201, 15)"
           customFunc={() => handleClick("notification")}
           color={currentColor}
           icon={<img src={notification} alt={notification} />}
-        />
+        /> */}
+        <Link to='./Notification' className="inline-block mt-2"
+          title="notification"
+          customFunc={() => handleClick("notificaton")}
+          color={currentColor}> <img className="w-6 h-6 md:w-12 mr-2 md:h-8" src={notification} alt={notification} />
+           </Link>
+
         {/* reworked on the Cart btn */}
         <Link to='./Order' className="inline-block mt-2"
           title="Cart"
           customFunc={() => handleClick("cart")}
-          color={currentColor}> <img src={cart} alt={cart} /> </Link>
+          color={currentColor}> <img className="w-6 h-6 md:w-12 mr-2 md:h-8" src={cart} alt={cart} /> </Link>
 
 <Link to='./MySettings' className="inline-block mt-2"
           title="Settings"
-          customFunc={() => handleClick("cart")}
-          color={currentColor}> <img src={settings} alt={settings} /> </Link>
+          customFunc={() => handleClick("settings")}
+          color={currentColor}> <img className="w-6 h-6 md:w-12 mr-2 md:h-8" src={settings} alt={settings} /> </Link>
 
         {/* <NavButton className="inline-block"
           title="Settings"
@@ -132,7 +140,7 @@ const Navbar = () => {
             // onClick={() => handleClick("userProfile")}
           >
             <img
-              className="rounded-full w-12 h-12"
+              className="rounded-full w-8 h-8 md:w-12 md:h-12"
               src={avatar}
               alt="user-profile"
             />
@@ -145,7 +153,7 @@ const Navbar = () => {
             <MdKeyboardArrowDown className="text-gray-400 text-14" /> */}
           </div>
         </TooltipComponent>
-        {isClicked.notification && <Notification />}
+        {/* {isClicked.notification && <Notification />} */}
         {isClicked.setting && <Settings />}
       </div>
 

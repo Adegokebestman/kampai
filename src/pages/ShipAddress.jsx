@@ -5,16 +5,16 @@ import { Link } from 'react-router-dom';
 const ShipAddress = () => {
   return (
     <div>
-          <div class="mt-10 grid grid-rows-1 grid-flow-col gap-4 justify-center   items-center">
+          <div class="md:mt-10 mt-24 grid grid-rows-1 grid-flow-col gap-4 justify-center   items-center">
 
 <div>
 
-<button className='font-medium mr-4 text-black text-2xl border border-white sidebar rounded-lg p-2'>
+<button className='font-medium mr-4 text-black text-xl md:text-2xl border border-white sidebar rounded-lg p-2'>
 <Link to='../MySettings' >
 <IoIosArrowBack/>
 </Link>
  </button>
- <p className='font-semibold text-2xl inline-block ml-2'>
+ <p className='font-semibold text-xl md:text-2xl inline-block ml-2'>
    Shipping Address  </p>
   </div>
 </div>
@@ -23,21 +23,21 @@ const ShipAddress = () => {
 
 <div className='justify-center flex'>
 
-<input placeholder='Fullname' className=' pl-10 ml-40 mr-40 w-2/4  text-[#AF501A]  border border-[#AF501A] rounded-lg p-4'>
+<input placeholder='Fullname' className='w-3/4 md:pl-10 md:ml-40 md:mr-40 md:w-2/4  text-[#AF501A]  border border-[#AF501A] rounded-lg p-4'>
 </input>
 
 </div>
 
 <div className='justify-center flex'>
 
-<input placeholder='Street, Street Number '  className=' pl-10 ml-40 mr-40 w-2/4  text-[#AF501A]  border border-[#AF501A] rounded-lg p-4'>
+<input placeholder='Street, Street Number '  className='w-3/4 md:pl-10 md:ml-40 md:mr-40 md:w-2/4  text-[#AF501A]  border border-[#AF501A] rounded-lg p-4'>
 </input>
 
 </div>
 
 <div className='justify-center flex'>
 
-<input placeholder='City Postal Code Country' className=' pl-10 ml-40 mr-40 w-2/4  text-[#AF501A]  border border-[#AF501A] rounded-lg p-4'>
+<input placeholder='City Postal Code Country' className='w-3/4 md:pl-10 md:ml-40 md:mr-40 md:w-2/4  text-[#AF501A]  border border-[#AF501A] rounded-lg p-4'>
 </input>
 
 </div>

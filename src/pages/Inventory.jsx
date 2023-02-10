@@ -6,8 +6,8 @@ import "./Order.css";
  export const Order = () => {
 
   return (
-    <div className='btn-count mt-10'>
-    <span className='border rounded-full border-white sidebar p-4 font-semibold text-black'> All items </span>
+    <div className='btn-count mt-24 p-4 md:mt-10'>
+    <span className='border rounded-full border-white boxShadow p-4 font-semibold text-black'> All items </span>
 {/* <div className='mt-10 border rounded-2xl h-52 border-white sidebar p-4 '> */}
 
 <div className='mt-10 flex flex-wrap lg:flex-nowrap justify-center'>

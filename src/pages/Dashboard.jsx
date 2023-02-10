@@ -9,12 +9,12 @@ import { Button } from '../components';
 
 const Dashboard = () => {
   return (
-    <div className='mt-12'>
+    <div className='mt-20 md:12'>
     <div className='flex flex-wrap lg:flex-nowrap justify-center'>
-    <div className='bg-white sidebar dark:text-gray-200 dark:bg-secondary-dark-bg h-22 rounded-xl w-80 lg:w-11/12 p-8 pt-9 m-3 '>
+    <div className='bg-white boxShadow dark:text-gray-200 dark:bg-secondary-dark-bg h-22 rounded-xl w-80 lg:w-11/12 p-8 pt-9 m-3 '>
 
 <div className='flex font-semibold justify-between items-center'>
-<p className='font-bold text-2xl'> Welcome, Jannet</p>
+<p className='font-bold text-xl md:text-2xl'> Welcome, Jannet</p>
 
 <div>
 <Link to="/Inventory">
@@ -31,10 +31,10 @@ const Dashboard = () => {
 
 
 </div>
-<div className='flex m-3 flex-wrap justify-center gap-20 items-center'>
+<div className='flex m-3 flex-wrap justify-center gap-4 items-center md:gap-20'>
       {/* check database to accept input */}
   {earningData.map((item) =>(
-    <div key={item.title} className="bg-white text-center sidebar dark:text-gray-200 dark:bg-secondary-dark-bg md:w-72 h-72 p-4 pt-20 rounded-2xl">
+    <div key={item.title} className="bg-white text-center boxShadow dark:text-gray-200 dark:bg-secondary-dark-bg md:w-72 h-40  p-4 pt-2 rounded-2xl md:pt-20 md:h-72">
     <button type='button' style={{color:item.iconColor, backgroundColor: item.iconBg}} className="text-2xl opacity-0.9 rounded-full p-4 hover:drop-shadow-xl">
     {item.icon}
     </button>
@@ -51,14 +51,14 @@ const Dashboard = () => {
  ))}
 
     </div>
-    <div className='flex justify-end float-right font-semibold rounded-full mt-8 mr-16 pr-10 bg-white sidebar items-center'>
+    <div className='flex justify-end float-right font-semibold rounded-full mt-8 mr-16 pr-10 bg-white boxShadow items-center'>
 
     <BiCurrentLocation className='text-4xl m-8 text-[#FF7E20]' />
 
 <div>
 <Link to="../Myorder">
 
-<Button className="m-12" color="white" bgColor="#FF7E20" text=" Track Order" borderRadius="10px" />
+<Button className="m-12 text-xl " color="white" bgColor="#FF7E20" text=" Track Order" borderRadius="10px" />
 </Link>
 
 </div>
