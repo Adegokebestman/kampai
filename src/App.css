@@ -13,13 +13,29 @@
 
 }
 
-@media only screen and (min-width: 768px) {
-  .boxShadow{
-    background-color: white !important;
+@media (max-width: 768px) {
+  .dashboard {
+  gap: 135px !important;
   }
-}
-
-
+  .dashboard-content{
+  padding-top: 4rem !important;
+  /* width: 15rem !important;
+  height: 15rem !important; */
+  }
+  }
+  @media (max-width: 480px) {
+    .dashboard {
+    gap: 15px !important;
+      flex-wrap: nowrap !important;
+    }
+    .dashboard-content{
+      padding-top: 1rem !important;
+      height: 12rem !important;
+      }
+      .hero {
+        width: 100% !important;
+      }
+  }
 
 
 

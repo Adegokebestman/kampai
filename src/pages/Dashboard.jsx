@@ -11,7 +11,7 @@ const Dashboard = () => {
   return (
     <div className='mt-20 md:12'>
     <div className='flex flex-wrap lg:flex-nowrap justify-center'>
-    <div className='bg-white boxShadow dark:text-gray-200 dark:bg-secondary-dark-bg h-22 rounded-xl w-80 lg:w-11/12 p-8 pt-9 m-3 '>
+    <div className='bg-white boxShadow hero dark:text-gray-200 dark:bg-secondary-dark-bg h-22 rounded-xl w-80 lg:w-11/12 p-8 pt-9 m-3 '>
 
 <div className='flex font-semibold justify-between items-center'>
 <p className='font-bold text-xl md:text-2xl'> Welcome, Jannet</p>
@@ -31,10 +31,10 @@ const Dashboard = () => {
 
 
 </div>
-<div className='flex m-3 flex-wrap justify-center gap-4 items-center md:gap-20'>
+<div className='flex m-3 flex-wrap dashboard justify-center gap-4 items-center md:gap-20'>
       {/* check database to accept input */}
   {earningData.map((item) =>(
-    <div key={item.title} className="bg-white text-center boxShadow dark:text-gray-200 dark:bg-secondary-dark-bg md:w-72 h-40  p-4 pt-2 rounded-2xl md:pt-20 md:h-72">
+    <div key={item.title} className="bg-white text-center dashboard-content boxShadow dark:text-gray-200 dark:bg-secondary-dark-bg md:w-72 h-40  p-4 pt-2 rounded-2xl md:pt-20 md:h-72">
     <button type='button' style={{color:item.iconColor, backgroundColor: item.iconBg}} className="text-2xl opacity-0.9 rounded-full p-4 hover:drop-shadow-xl">
     {item.icon}
     </button>

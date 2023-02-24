@@ -4,6 +4,9 @@ export { default as Order } from './Order';
 export { default as Message } from './Message';
 export { default as Inventory } from './Inventory';
 export { default as Myorder } from './Myorder';
+export {default as Roles} from  './Roles';
+export {default as SignUp} from  './SignUp';
+export {default as Otp} from  './Otp';
 
 export { default as OrderTrack } from './OrderTrack';
 export { default as PaymentMethod } from './PaymentMethod';

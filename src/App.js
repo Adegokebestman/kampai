@@ -1,21 +1,18 @@
 import React, {useEffect} from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
 import {FiSettings} from 'react-icons/fi';
 import {TooltipComponent} from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Dashboard, Order, ShipAddress, PaymentMethod, CheckOut, Message, Inventory, Myorder, MySettings, OrderTrack, UserInfo, Login, Notification } from './pages';
+import { Dashboard, Order, ShipAddress, PaymentMethod, CheckOut, Message, Inventory, Myorder, MySettings, OrderTrack, UserInfo, Login, Notification, Roles, SignUp,Otp } from './pages';
 import { useStateContext } from './contexts/ContextProvider';
 import './App.css';
 
-const App = () => {
+const Layout = () => {
   const { activeMenu } = useStateContext();
-  return (
-    <div>
-
-      <BrowserRouter>
-
-    <div className="flex relative dark:bg-main-dark-bg">
+return (
+  <>
+<div className="flex relative dark:bg-main-dark-bg">
 
 {/* If the Menu/ Sidebar is active or not */}
 {activeMenu ? (
@@ -33,17 +30,27 @@ const App = () => {
     ${activeMenu ? 'md:ml-72' : 'flex-2'}`
     }>
 
-    <div className="fixed md:static bg-main-bg dark:bg-main-bg
-    navbar w-full">
   <Navbar />
-   </div>
+<Outlet />
+</div>
+    </div>
+  </>
+  )
+}
 
+const App = () => {
+
+  return (
+    <div>
+
+      <BrowserRouter>
 
   {/* for routing */}
     <div>
     <Routes>
+
     {/* Dashboard */}
-    <Route path="/" element={<Dashboard />} />
+<Route element= {<Layout/>}>
     <Route path="/dashboard" element={<Dashboard />} />
 
     {/* Pages */}
@@ -56,14 +63,16 @@ const App = () => {
     <Route path="/shipaddress" element={<ShipAddress />} />
     <Route path="/ordertrack" element={<OrderTrack />} />
     <Route path="/userinfo" element={<UserInfo />} />
-    <Route path="/login" element={<Login />} />
     <Route path="/notification" element={<Notification />} />
 
-
+</Route>
+    <Route path="/" element={<Roles />} />
+    <Route path="/login" element={<Login />} />
+    <Route path='/signup' element={<SignUp/>} />
+    <Route path='/otp' element={<Otp/>} />
 
 </Routes>
-    </div>
-    </div>
+
      </div>
 
       </BrowserRouter>
