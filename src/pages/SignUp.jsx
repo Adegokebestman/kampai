@@ -69,11 +69,11 @@ if (Object.keys(validationErrors).length > 0) {
          // store the access token in localStorage
          localStorage.setItem('accessToken', response.data.accessToken);
          localStorage.setItem('email', formData.email);
-        window.location.href = '/otp';
-
+       // window.location.href = '/otp';
+        navigate(`/otp?access_token=${response.data.accessToken}&email=${formData.email}`)
 
       // Navigate to the OTP page and pass along the access token and email
-      window.location.href = `/otp?access_token=${response.data.accessToken}&email=${formData.email}`;
+      //window.location.href = `/otp?access_token=${response.data.accessToken}&email=${formData.email}`;
 
 
       } catch (error) {

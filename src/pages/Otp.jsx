@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios';
 
 const OTP_URL = "/auth/SendverificationCode";
+const OTP_VERIFY = '/auth/VerifyVerificationCode'
 
 const Otp = () => {
   const [otp, setOtp] = useState(new Array(4).fill(""));
@@ -59,7 +60,7 @@ const Otp = () => {
         if (/^\d{4}$/.test(code)) {
           try {
             setLoading(true);
-            const response = await axios.post(OTP_URL, {
+            const response = await axios.post(OTP_VERIFY, {
               email,
               code
             }, {
@@ -67,20 +68,14 @@ const Otp = () => {
                 'Authorization': `Bearer ${accessToken}`,
                 'Content-Type': 'application/json'
               },
-              // data: {
-              //   email, code
-              // }
             });
             console.log(response.data);
-            if (response.data === true) {
+
              // throw new Error('Failed to verify OTP');
              navigate('../dashboard')
 
-            }
-            // else if (response.data.success) {
-            //   navigate('dashboard')
-            // }
-            console.log(response);
+
+
             setError(null);
           } catch (error) {
             setError('Failed to verify OTP');
