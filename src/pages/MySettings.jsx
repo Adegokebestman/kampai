@@ -11,7 +11,7 @@ function MySettings() {
 <div>
 
 <button className='font-medium mr-4 text-black text-2xl border border-white sidebar rounded-lg p-2'>
-<Link to='/' >
+<Link to='../Dashboard' >
 <IoIosArrowBack/>
 </Link>
  </button>

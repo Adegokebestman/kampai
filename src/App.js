@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
+import { Routes, Route, Outlet} from 'react-router-dom';
 import {FiSettings} from 'react-icons/fi';
 import {TooltipComponent} from '@syncfusion/ej2-react-popups';
-
+import RequiredAuth from './components/RequireAuth';
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
 import { Dashboard, Order, ShipAddress, PaymentMethod, CheckOut, Message, Inventory, Myorder, MySettings, OrderTrack, UserInfo, Login, Notification, Roles, SignUp,Otp } from './pages';
 import { useStateContext } from './contexts/ContextProvider';
@@ -43,14 +43,15 @@ const App = () => {
   return (
     <div>
 
-      <BrowserRouter>
+      <Routes>
 
   {/* for routing */}
-    <div>
-    <Routes>
+    <>
+    <Route>
 
     {/* Dashboard */}
 <Route element= {<Layout/>}>
+<Route element={<RequiredAuth />}>
     <Route path="/dashboard" element={<Dashboard />} />
 
     {/* Pages */}
@@ -66,16 +67,17 @@ const App = () => {
     <Route path="/notification" element={<Notification />} />
 
 </Route>
+</Route>
     <Route path="/" element={<Roles />} />
     <Route path="/login" element={<Login />} />
     <Route path='/signup' element={<SignUp/>} />
     <Route path='/otp' element={<Otp/>} />
 
-</Routes>
+</Route>
 
-     </div>
+     </>
 
-      </BrowserRouter>
+      </Routes>
     </div>
   )
 }

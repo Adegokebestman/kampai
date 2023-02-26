@@ -17,39 +17,50 @@ const navigate = useNavigate();
 
 const handleRoleAssignment = (role) => {
 	setSelectedRole(role);
-	navigate(`/signup?role=${role}`);
+	// navigate(`/signup?role=${role}`);
+	const roleLink = {
+		"buyer" : "http://localhost:3000/signup",
+		"supplier": 'http://localhost:3001/signup',
+		"truck": 'http://localhost:3002/signup'
+	}
+	console.log(role)
+	window.location.href = roleLink[role];
+
+
 }
+
+
 
 return (
     <div className='bg-[#FF7E20]  h-screen'>
 	 <div className='pt-20'>
-<img className=' ml-auto mr-auto  block w-2/12' src={kanpai} alt="kanpai logo" />
+<img className=' ml-auto mr-auto  block w-3/6 md:w-2/12' src={kanpai} alt="kanpai logo" />
   </div>
 
   <div>
   <section className="py-6 mt-12 dark:bg-gray-800">
-	<div className="container flex flex-col items-center justify-center p-4 mx-auto">
-		<div className="grid grid-cols-1 gap-5 lg:grid-cols-3 sm:grid-cols-2">
+	<div className=" flex flex-col items-center justify-center p-4 mx-auto">
+		<div className="grid grid-cols-3 gap-5 lg:grid-cols-3 sm:grid-cols-3">
 			<div>
-			<p className='m-2 text-2xl text-center text-white'> Bar?</p>
-<div  className='boxShadow pb-24 rounded-lg bg-white p-10'>
+			<p className='m-2 text-lg md:text-2xl text-center text-white'> Bar?</p>
+<div  className='boxShadow imgHolder pb-24 rounded-lg bg-white'>
 
-<img className='pt-10' src={bar} alt="buyer" onClick={()=> handleRoleAssignment ('buyer')} />
+<img className='pt-10 imgSize' src={bar} alt="buyer" onClick={()=> handleRoleAssignment ('buyer')} />
 		</div>
 			</div>
 
 			<div>
-			<p className='m-2 text-2xl text-center text-white'>Supplier?</p>
-			<div  className='boxShadow   rounded-lg bg-white p-10'>
+			<p className='m-2 text-lg md:text-2xl text-center text-white'>Supplier?</p>
+			<div  className='boxShadow imgHolder  rounded-lg bg-white'>
 
-			<img onClick={()=> handleRoleAssignment ('supplier')} alt="supplier" className="object-cover pt-10  dark:bg-gray-500 aspect-square" src={supplier} />
+			<img onClick={()=> handleRoleAssignment ('supplier')} alt="supplier" className="object-cover pt-10  dark:bg-gray-500 aspect-square imgSize" src={supplier} />
 </div>
 	</div>
 			<div className='w-full'>
-			<p className=' m-2 text-2xl text-center text-white'>Truck Driver?</p>
-			<div className='boxShadow  pb-24 rounded-lg bg-white p-10'>
+			<p className=' m-2 text-lg md:text-2xl text-center text-white'> Driver?</p>
+			<div className='boxShadow imgHolder  pb-24 rounded-lg bg-white'>
 
-			<img onClick={()=> handleRoleAssignment ('truck')} alt="driver" className=" pt-10 dark:bg-gray-500 aspect-square" src={truck_driver} />
+			<img onClick={()=> handleRoleAssignment ('truck')} alt="driver" className=" pt-10 dark:bg-gray-500 aspect-square imgSize" src={truck_driver} />
 		</div>
 	</div>
 		</div>
