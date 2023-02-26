@@ -19,7 +19,7 @@ const handleRoleAssignment = (role) => {
 	setSelectedRole(role);
 	// navigate(`/signup?role=${role}`);
 	const roleLink = {
-		"buyer" : "http://localhost:3000/signup",
+		"buyer" :"https://rad-fenglisu-2adbc8.netlify.app//signup",
 		"supplier": 'http://localhost:3001/signup',
 		"truck": 'http://localhost:3002/signup'
 	}
