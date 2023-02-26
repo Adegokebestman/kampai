@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { BsChatLeft } from "react-icons/bs";
@@ -15,7 +15,7 @@ import notification from '../data/notification.svg';
  import settings from '../data/settings.svg';
 import { Order } from "../pages";
 import Notification from "../pages";
-
+import axios from "../api/axios";
 
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
@@ -36,6 +36,20 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
+  const [notificationCount, setNotificationCount] = useState('');
+  const NOTIFICATION_COUNT = '/notifications/getNotifications';
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+
+    axios.get(NOTIFICATION_COUNT, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    }).then((response) => {
+      console.log('Notification:',response)
+      setNotificationCount(response.data.allNotifications);
+    });
+  }, []);
+
   const {
     currentColor,
     activeMenu,
@@ -113,7 +127,12 @@ const Navbar = () => {
         <Link to='./Notification' className="inline-block mt-2"
           title="notification"
           customFunc={() => handleClick("notificaton")}
-          color={currentColor}> <img className="w-6 h-6 md:w-12 mr-2 md:h-8" src={notification} alt={notification} />
+          color={currentColor}>
+          <span class="relative inline-flex items-center text-sm font-medium text-center text-white">
+          <img className="w-6 h-6 md:w-12 mr-2 md:h-8" src={notification} alt={notification} />
+  <span class="sr-only">Notifications</span>
+  <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 right-2 dark:border-gray-900">{notificationCount}</div>
+</span>
            </Link>
 
         {/* reworked on the Cart btn */}

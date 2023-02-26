@@ -32,8 +32,15 @@ import pro2 from './pro2.png';
 import pro3 from './pro3.png';
 import pro4 from './pro4.png';
 import apple from './apple.png';
-
+import axios from '../api/axios';
 import pro5 from './pro5.png';
+
+function ApiData() {
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+
+
+}
 
 export const gridOrderImage = (props) => (
   <div>

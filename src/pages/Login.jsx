@@ -37,6 +37,7 @@ const Login = () => {
 			// Handle response from API
 			console.log(response.data);
 			const accessToken = (response.data.accessToken);
+			localStorage.setItem("accessToken", accessToken);
 			setAuth({email, password, accessToken});
 			console.log(setAuth)
 			//redirects to dashboard
