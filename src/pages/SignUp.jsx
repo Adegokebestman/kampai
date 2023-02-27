@@ -27,6 +27,7 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
 
   const handleValidation = () => {
@@ -82,7 +83,22 @@ const SignUp = () => {
           console.log(response);
         })
         .catch((error) => console.error(error))
-        .finally(() => setIsLoading(false));
+        if (!error.response) {
+          setError("No server response");
+          setIsLoading(false);
+        } else if (error.response?.status === 400 ) {
+          setError("Missing Username or Password")
+          setIsLoading(false);
+        }else if (error.response?.status === 500 ) {
+          setError("server error")
+          setIsLoading(false);
+        } else if(error.response?.status === 401) {
+          setError("Wrong Email or Password");
+          setIsLoading(false);
+        } else {
+          setError('Login failed')
+          setIsLoading(false);
+        };
     }
   };
 
@@ -121,6 +137,8 @@ const SignUp = () => {
   <img style={{width:'190px'}}  src={kanpai}/>
 
 </div>
+	{error && <div className='text-red-600 font-bold'>{error}</div>}
+
 <form onSubmit={handleSubmit} className="space-y-6 ng-untouched ng-pristine ng-valid">
 <div className="space-y-1 text-sm">
       {/* <label for="Ema" className="block dark:text-gray-400">Username</label> */}
