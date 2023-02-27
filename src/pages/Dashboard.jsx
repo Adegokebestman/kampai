@@ -14,12 +14,14 @@ const PENDING_ORDERS = '/orders/getPendingOrders';
 const UNREAD_MESSAGES = '/messages/getUnreadMessages';
 const MODIFIED_ORDERS = '/orders/getModifiedOrders';
 const USER_INFO = '/users/getUserInfo';
+const READ_NOTIFICATION = '/notifications/readNotification'
 
 const Dashboard = () => {
   const [pendingOrders, setPendingOrders] = useState("");
   const [unReadMessages, setUnReadMessages] = useState("");
   const [modifiedOrders, setModifiedOrders] = useState("");
-  const [userInfo, setUserInfo] = useState("")
+  const [userInfo, setUserInfo] = useState("");
+  const [readNotification, setReadNotification] = useState('');
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -28,7 +30,7 @@ const Dashboard = () => {
       headers: { Authorization: `Bearer ${accessToken}` }
     }).then((response) => {
       console.log(response)
-      setPendingOrders(response.data.orders);
+      setPendingOrders(response.data.pendingOrders);
     });
   }, []);
 
@@ -62,6 +64,17 @@ const Dashboard = () => {
     }).then((response) => {
       console.log('UserInfo:',response)
       setUserInfo(response.data.userInfo.lastName);
+    });
+  }, []);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+
+    axios.post(READ_NOTIFICATION, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    }).then((response) => {
+      console.log('READ:',response)
+      readNotification(response.data);
     });
   }, []);
 

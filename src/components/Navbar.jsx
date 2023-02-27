@@ -131,7 +131,7 @@ const Navbar = () => {
           <span class="relative inline-flex items-center text-sm font-medium text-center text-white">
           <img className="w-6 h-6 md:w-12 mr-2 md:h-8" src={notification} alt={notification} />
   <span class="sr-only">Notifications</span>
-  <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 right-2 dark:border-gray-900">{notificationCount}</div>
+  <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 right-2 dark:border-gray-900">{notificationCount.length}</div>
 </span>
            </Link>
 

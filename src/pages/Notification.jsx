@@ -32,7 +32,7 @@ const Notification = () => {
 <div>
 
 <Link to='../OrderTrack'>
-<button className=" text-white bg-[#FF7E20] px-2 p-3 hover:drop-shadow-xl md:px-10">Go</button>
+<button className=" text-white bg-[#FF7E20] px-2 p-3 hover:drop-shadow-xl md:px-10">Read</button>
 </Link>
 
 </div>
