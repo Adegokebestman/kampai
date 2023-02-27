@@ -102,23 +102,7 @@ const Dashboard = () => {
 
 </div>
 <div className='flex m-3 flex-wrap dashboard justify-center gap-4 items-center md:gap-20'>
-      {/* check database to accept input */}
-  {/* {earningData.map((item) =>(
-    <div key={item.title} className="bg-white text-center dashboard-content boxShadow dark:text-gray-200 dark:bg-secondary-dark-bg md:w-72 h-40  p-4 pt-2 rounded-2xl md:pt-20 md:h-72">
-    <button type='button' style={{color:item.iconColor, backgroundColor: item.iconBg}} className="text-2xl opacity-0.9 rounded-full p-4 hover:drop-shadow-xl">
-    {item.icon}
-    </button>
-    <p className='mt-3'>
-      <span className='text-2xl font-semibold'>
-      {item.amount}
-      </span>
 
-    </p>
-    <span className={`text-sm`}>
-      {item.title}
-      </span>
-     </div>
- ))} */}
  <div className="bg-white text-center dashboard-content boxShadow dark:text-gray-200 dark:bg-secondary-dark-bg md:w-72 h-40  p-4 pt-2 rounded-2xl md:pt-20 md:h-72">
     <button type='button' style={{color:'#34A853', backgroundColor: '#EDFBED'}} className="text-2xl opacity-0.9 rounded-full p-4 hover:drop-shadow-xl">
     <BsBoxSeam/>

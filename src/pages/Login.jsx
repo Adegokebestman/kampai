@@ -24,46 +24,47 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState('');
 
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		if(validateEmail() && validatePassword())
-		//  {
-		// 	setError("Please enter both email and password");
-		// 	return;
-		// }
-		try {
-			setIsLoading(true);
-			const response = await axios.post(LOGIN_URL, {
-			  email: email,
-			  password: password,
-			});
-			//setIsLoading(false)
-			// Handle response from API
-			console.log(response.data);
-			const accessToken = (response.data.accessToken);
-			localStorage.setItem("accessToken", accessToken);
-			setAuth({email, password, accessToken});
-			console.log(setAuth)
-			//redirects to dashboard
-			navigate(from, { replace: true});
-			// window.location.href = "/dashboard";
-		  } catch (error) {
-			console.log(error)
-			//setIsLoading(false)
-			// .finally(() => setIsLoading(false));
-			if (!error.response) {
-				setError("No server response");
-			} else if (error.response?.status === 400 ) {
-				setError("Missing Username or Password")
-			} else if(error.response?.status === 401) {
-				setError("Wrong Email or Password");
-				setIsLoading(false);
-			} else {
-				setError('Login failed')
-			};
-		  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+	if(validateEmail() && validatePassword())
 
+    try {
+		setIsLoading(true);
+      const response = await axios.post(LOGIN_URL, {
+        email,
+        password,
+      });
+	  const  role  = response.data.UserInfo.userType;
+	  console.log("Role:",role)
+	  const accessToken = (response.data.accessToken);
+      if (role === "Supplier" || role === "driver") {
+        setError("You do not have access to this app.");
+		setIsLoading(false);
+      } else if (role === "Buyer") {
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("email", email);
+		setAuth({email, password, accessToken});
+			console.log(setAuth)
+        navigate(from, { replace: true});
+      } else if (!error.response) {
+		setError("No server response");
+		setIsLoading(false);
+	} else if (error.response?.status === 400 ) {
+		setError("Missing Username or Password");
+		setIsLoading(false);
+	} else if(error.response?.status === 401) {
+		setError("Wrong Email or Password");
+		setIsLoading(false);
+	} else {
+		setError('Login failed')
+		setIsLoading(false);
 	};
+    } catch (error) {
+      setError("Invalid email or password.");
+	  setIsLoading(false);
+    }
+  };
+
 	const validateEmail = () => {
 		if (!email) {
 		  setEmailError('Email is required');
@@ -89,6 +90,7 @@ const Login = () => {
 		  return true;
 		}
 	  };
+
 
   return (
     <div className='bg-[#FF7E20]    h-screen'>
