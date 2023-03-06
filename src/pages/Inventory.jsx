@@ -1,9 +1,35 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { productList } from '../data/dummy';
 import Product from '../components/product';
 import "./Order.css";
+import axios from '../api/axios';
 
+const PRDUCTLIST = '/products/getAllProducts'
  export const Order = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const token = localStorage.getItem('accessToken');
+
+      try {
+        const response = await axios.get(PRDUCTLIST,{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        console.log(response.data)
+        setProducts(response.data.products);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+
+
 
   return (
     <div className='btn-count mt-24 p-4 md:mt-10'>
@@ -15,8 +41,8 @@ import "./Order.css";
 <div className='flex m-3 flex-wrap justify-center gap-8 items-center '>
 
 
-{productList.map((product) => (
-  <Product key={product.id} product={product}>
+{products.map((product, index) => (
+  <Product key={product._id} product={product}>
 
  </Product>
 
@@ -27,6 +53,7 @@ import "./Order.css";
 
 
 </div>
+
 
 </div>
 

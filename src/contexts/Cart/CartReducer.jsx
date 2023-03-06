@@ -36,7 +36,7 @@ import {
     switch (action.type) {
       // If the action type is ADD_TO_CART, we want to add the item to the cartItems array
       case ADD_TO_CART:
-        if (!state.cartItems.find((item) => item.id === action.payload.id)) {
+        if (!state.cartItems.find((item) => item._id === action.payload.id)) {
           state.cartItems.push({
             ...action.payload,
             quantity: 1,
@@ -54,10 +54,10 @@ import {
         return {
           ...state,
           ...sumItems(
-            state.cartItems.filter((item) => item.id !== action.payload.id)
+            state.cartItems.filter((item) => item._id !== action.payload._id)
           ),
           cartItems: [
-            ...state.cartItems.filter((item) => item.id !== action.payload.id),
+            ...state.cartItems.filter((item) => item._id !== action.payload._id),
           ],
         };
 

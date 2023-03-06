@@ -33,7 +33,7 @@ const Order = () => {
 
 <ul>
                   {cartItems.map((product) => (
-                    <CartItem key={product.id} product={product} />
+                    <CartItem key={product._id} product={product} />
                   ))}
                 </ul>
 

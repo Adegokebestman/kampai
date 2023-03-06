@@ -11,17 +11,17 @@ const { removeFromCart, increase, decrease } = useContext(CartContext);
   return (
 <ul className='flex container flex-row mb-8 bg-white text-center sidebar  dark:text-gray-200 dark:bg-secondary-dark-bg md:w-full h-32 p-4 rounded-2xl'>
   <li className='flex-item md:pr-8'>
-  <img src={product.image} />
+  <img src={product.photo} />
 
 </li>
 {/* <li key = {product.id} className="mr-4 mt-4 md:mr-20 md:mt-8"> {product.id}</li> */}
 
-<li className='mr-2 p-2 text-sm font-medium md:p-8 md:font-medium md:mr-16'>{product.name}
+<li className='mr-2 p-2 text-sm font-medium md:p-8 md:font-medium md:mr-16'>{product.productName}
 
-<br/><span className='status'> Available {product.quantity} </span>
+<br/><span className='status'> Available {product.available} </span>
 </li>
 
-<li className='ml-2 mr-1 mt-8 md:ml-8 md:mr-16 md:mt-8 font-medium'> {product.price} </li>
+<li className='ml-2 mr-1 mt-8 md:ml-8 md:mr-16 md:mt-8 font-medium'>${product.price} </li>
 
 {/* Buttons */}
 {/* increase Product */}

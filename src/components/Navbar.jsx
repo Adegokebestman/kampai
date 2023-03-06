@@ -37,7 +37,9 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 
 const Navbar = () => {
   const [notificationCount, setNotificationCount] = useState('');
+  const [profile, setProfile] = useState('');
   const NOTIFICATION_COUNT = '/notifications/getNotifications';
+  const USERINFO = '/users/getUserInfo';
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -47,6 +49,17 @@ const Navbar = () => {
     }).then((response) => {
       console.log('Notification:',response)
       setNotificationCount(response.data.allNotifications);
+    });
+  }, []);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+
+    axios.get(USERINFO, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    }).then((response) => {
+      console.log('profile:',response)
+      setProfile(response.data.userInfo);
     });
   }, []);
 
@@ -160,7 +173,7 @@ const Navbar = () => {
           >
             <img
               className="rounded-full w-8 h-8 md:w-12 md:h-12"
-              src={avatar}
+              src={profile.photo}
               alt="user-profile"
             />
             {/* <p>

@@ -63,7 +63,7 @@ const Dashboard = () => {
       headers: { Authorization: `Bearer ${accessToken}` }
     }).then((response) => {
       console.log('UserInfo:',response)
-      setUserInfo(response.data.userInfo.lastName);
+      setUserInfo(response.data.userInfo.name);
     });
   }, []);
 
