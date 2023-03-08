@@ -20,7 +20,7 @@ const Product = ({ product }) => {
       </li>
       {/* <li className="mr-2 mt-4 md:mr-20 md:mt-8"> {product.id}</li> */}
 
-      <li className="pt-4 leading-5 mr-2 md:font-medium md:p-8 md:p-8 md:mr-16">
+      <li className="pt-4 leading-5 mr-2 md:font-medium p-2 md:p-8 md:mr-16 w-10 md:w-52">
         {product.productName} <br />
         <span className="status"> Available {product.available} </span>
       </li>

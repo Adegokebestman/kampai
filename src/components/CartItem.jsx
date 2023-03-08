@@ -16,7 +16,7 @@ const { removeFromCart, increase, decrease } = useContext(CartContext);
 </li>
 {/* <li key = {product.id} className="mr-4 mt-4 md:mr-20 md:mt-8"> {product.id}</li> */}
 
-<li className='mr-2 p-2 text-sm font-medium md:p-8 md:font-medium md:mr-16'>{product.productName}
+<li className='mr-2 p-2 text-sm font-medium md:p-8 md:font-medium md:mr-16 w-10 md:w-52'>{product.productName}
 
 <br/><span className='status'> Available {product.available} </span>
 </li>

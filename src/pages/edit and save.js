@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import {IoIosArrowBack} from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import {BiPencil} from 'react-icons/bi';
@@ -6,83 +6,123 @@ import {BsCamera} from 'react-icons/bs';
 import './UserInfo.css';
 import axios from '../api/axios';
 
-const CHANGEIMAGE = '/modify/ModifyUserImage';
-const CHANGEINFO = '/modify/ModifyUserInfo';
-const USERINFO = '/users/getUserInfo';
 
-const UserInfo = () => {
-
-  const [userData, setUserData] = useState({
-    name: "",
-    phone: "",
-    description: "",
-    image: "",
-  });
-
-  const [barInfo, setBarInfo] = useState('');
-  const [productImagePreview, setProductImagePreview] = useState('');
-
-
-  const [isEditing, setIsEditing] = useState(false);
+function ProfilePage() {
+  const [accessToken, setAccessToken] = useState("");
+  const [userData, setUserData] = useState({});
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingNumber, setIsEditingNumber] = useState(false);
+  const [isEditingDescription, setIsEditingDescription] = useState(false);
+  const [nameInput, setNameInput] = useState("");
+  const [numberInput, setNumberInput] = useState("");
+  const [descriptionInput, setDescriptionInput] = useState("");
 
   useEffect(() => {
-    axios.get(USERINFO).then((response) => {
-      setBarInfo(response.data.userInfo);
-      console.log("barInfo:", barInfo)
-    });
-  }, []);
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserData({ ...userData, [name]: value });
-  };
-
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append("image", file);
-    setProductImagePreview(URL.createObjectURL(file));
-    axios
-      .post(CHANGEIMAGE, formData)
-      .then((response) => {
-        setUserData({ ...userData, profilePicture: response.data.imageUrl });
-      });
-  };
-
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleSaveClick = () => {
-    axios
-      .post(CHANGEINFO, userData)
-      .then((response) => {
-        setIsEditing(false);
-        console.log(userData)
-      });
-  };
-
-  // set access token to axios defaults headers when it is present in local storage
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    // Check if the user is logged in and has an access token
+    const storedAccessToken = localStorage.getItem("accessToken");
+    if (storedAccessToken) {
+      setAccessToken(storedAccessToken);
+      // Get the user's data from the API
+      fetch("https://api.example.com/user", {
+        headers: {
+          Authorization: `Bearer ${storedAccessToken}`
+        }
+      })
+        .then(response => response.json())
+        .then(data => setUserData(data))
+        .catch(error => console.error(error));
+    } else {
+      // Redirect to the login page if the user is not logged in
+      window.location.href = "/login";
     }
   }, []);
 
-  // axios interceptor to add access token to every request
-  axios.interceptors.request.use(
-    function (config) {
-      const accessToken = localStorage.getItem("accessToken");
-      if (accessToken) {
-        config.headers.Authorization = `Bearer ${accessToken}`;
-      }
-      return config;
-    },
-    function (error) {
-      return Promise.reject(error);
-    }
-  );
+  function handleNameEditClick() {
+    setIsEditingName(true);
+    setNameInput(userData.name);
+  }
+
+  function handleNumberEditClick() {
+    setIsEditingNumber(true);
+    setNumberInput(userData.number);
+  }
+
+  function handleDescriptionEditClick() {
+    setIsEditingDescription(true);
+    setDescriptionInput(userData.description);
+  }
+
+  function handleNameSaveClick() {
+    // Send the updated name to the API
+    fetch("https://api.example.com/user", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({
+        name: nameInput
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        setUserData(data);
+        setIsEditingName(false);
+      })
+      .catch(error => console.error(error));
+  }
+
+  function handleNumberSaveClick() {
+    // Send the updated number to the API
+    fetch("https://api.example.com/user", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({
+        number: numberInput
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        setUserData(data);
+        setIsEditingNumber(false);
+      })
+      .catch(error => console.error(error));
+  }
+
+  function handleDescriptionSaveClick() {
+    // Send the updated description to the API
+    fetch("https://api.example.com/user", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({
+        description: descriptionInput
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        setUserData(data);
+        setIsEditingDescription(false);
+      })
+      .catch(error => console.error(error));
+  }
+
+  function handleNameInputChange(event) {
+    setNameInput(event.target.value);
+  }
+
+  function handleNumberInputChange(event) {
+    setNumberInput(event.target.value);
+  }
+
+  function handleDescriptionInputChange(event) {
+    setDescriptionInput(event.target.value);
+  }
 
   return (
     <div>
@@ -207,8 +247,6 @@ const UserInfo = () => {
 
     </div>
   )
+
 }
-
-export default UserInfo
-
-
+export default ProfilePage;
