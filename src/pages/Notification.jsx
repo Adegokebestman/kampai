@@ -1,9 +1,50 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {IoIosArrowBack} from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import {BsChatLeftText, BsCheck2Circle} from 'react-icons/bs';
+import axios from '../api/axios';
 
+const READNOTIFICATION = '/notifications/readNotification ';
+const GETNOTIFICATION = '/notifications/getNotifications';
 const Notification = () => {
+
+  const [notifications, setNotifications] = useState([]);
+
+  const token = localStorage.getItem('accessToken');
+
+  useEffect(() => {
+    async function fetchNotifications() {
+      const response = await axios.get(GETNOTIFICATION, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("noti:",response.data.allNotifications)
+      setNotifications(response.data.allNotifications);
+      console.log()
+    }
+    fetchNotifications();
+  }, []);
+
+  const handleNotificationClick = async (notifications) => {
+    const token = localStorage.getItem('accessToken');
+    // Send POST request to mark notification as read
+    console.log(notifications)
+    try {
+      const response = await axios.post(READNOTIFICATION, { notificationId: notifications},
+         {
+          headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      },
+        );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
   return (
     <div className='mt-24 md:mt-10'>
 <div class=" grid grid-rows-1 grid-flow-col gap-4 justify-start ml-12 items-center">
@@ -26,7 +67,15 @@ const Notification = () => {
 <BsChatLeftText className='text-[#FF7E20] text-4xl'/>
 <div>
 
-<h3 className="md:text-2xl text-xl inline-block  ml-8">check your messages</h3>
+<ul>
+        {notifications.map((notification) => (
+          <li key={notification.id} onClick={() => handleNotificationClick(notification.id)}>
+            {notification.notification} {notification.isRead ? '(read)' : ''}
+          </li>
+        ))}
+      </ul>
+
+{/* <h3 className="md:text-2xl text-xl inline-block  ml-8">check your messages</h3> */}
 
 </div>
 <div>

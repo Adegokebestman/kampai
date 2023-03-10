@@ -8,6 +8,7 @@ import axios from '../api/axios';
 const PAYMENTMETHOD = '/payment/createUserPaymentInfo';
 const PaymentMethod = () => {
   const [name, setName] = useState('');
+  const [userData, setUserData] = useState({});
   const [lastName, setLastName] = useState('');
   const [billingAddress, setBillingAddress] = useState('');
   const [companyName, setCompanyName] = useState('');
@@ -16,7 +17,122 @@ const PaymentMethod = () => {
   const [cvv, setCvv] = useState('');
   const [errors, setErrors] = useState({});
   const [paymentMethod, setPaymentMethod] = useState('');
+  const [isEditingCardNumber, setIsEditingCardNumber] = useState(false);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingBillingAddress, setIsEditingBillingAddress] = useState(false);
+  const [isEditingExpiryDate, setIsEditingExpiryDate] = useState(false);
+  const [isEditingCvv, setIsEditingCvv] = useState(false);
+  const [isEditingPaymentMethod, setIsEditingPaymentMethod] = useState(false);
+  const [isEditingCompany, setIsEditingCompany] = useState(false);
 
+
+  function handleNameEditClick() {
+    setIsEditingName(true);
+    setName(userData.name);
+  }
+
+  function handleCardNumberEditClick() {
+    setIsEditingCardNumber(true);
+    setCardNumber(userData.cardNumber);
+  }
+
+  function handleBillingAddressEditClick() {
+    isEditingBillingAddress(true);
+    setBillingAddress(userData.description);
+  }
+
+  function handleExpiryDateEditClick() {
+    setIsEditingExpiryDate(true);
+    setExpiryDate(userData.description);
+  }
+
+  function handleCvvEditClick() {
+    setIsEditingCvv(true);
+    setCvv(userData.description);
+  }
+
+  function handlePaymentMethod() {
+    setIsEditingPaymentMethod(true);
+    setPaymentMethod(userData.description);
+  }
+
+  function handleCompanyEditCLick() {
+    setIsEditingCompany(true);
+    setCompanyName(userData.description);
+  }
+
+
+  function handleNameSaveClick() {
+    // Send the updated name to the API
+    fetch("https://api.example.com/user", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({
+        name: nameInput
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        setUserData(data);
+        setIsEditingName(false);
+      })
+      .catch(error => console.error(error));
+  }
+
+  function handleNumberSaveClick() {
+    // Send the updated number to the API
+    fetch("https://api.example.com/user", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({
+        number: numberInput
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        setUserData(data);
+        setIsEditingNumber(false);
+      })
+      .catch(error => console.error(error));
+  }
+
+  function handleDescriptionSaveClick() {
+    // Send the updated description to the API
+    fetch("https://api.example.com/user", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`
+      },
+      body: JSON.stringify({
+        description: descriptionInput
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        setUserData(data);
+        setIsEditingDescription(false);
+      })
+      .catch(error => console.error(error));
+  }
+
+  function handleNameInputChange(event) {
+    setNameInput(event.target.value);
+  }
+
+  function handleNumberInputChange(event) {
+    setNumberInput(event.target.value);
+  }
+
+  function handleDescriptionInputChange(event) {
+    setDescriptionInput(event.target.value);
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
