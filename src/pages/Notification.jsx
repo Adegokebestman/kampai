@@ -3,6 +3,7 @@ import {IoIosArrowBack} from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import {BsChatLeftText, BsCheck2Circle} from 'react-icons/bs';
 import axios from '../api/axios';
+import NotificationItem from '../components/NotificationItem';
 
 const READNOTIFICATION = '/notifications/readNotification ';
 const GETNOTIFICATION = '/notifications/getNotifications';
@@ -26,23 +27,23 @@ const Notification = () => {
     fetchNotifications();
   }, []);
 
-  const handleNotificationClick = async (notifications) => {
-    const token = localStorage.getItem('accessToken');
-    // Send POST request to mark notification as read
-    console.log(notifications)
-    try {
-      const response = await axios.post(READNOTIFICATION, { notificationId: notifications},
-         {
-          headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      },
-        );
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleNotificationClick = async (notifications) => {
+  //   const token = localStorage.getItem('accessToken');
+  //   // Send POST request to mark notification as read
+  //   console.log(notifications)
+  //   try {
+  //     const response = await axios.post(READNOTIFICATION, { notificationId: notifications},
+  //        {
+  //         headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       }
+  //     },
+  //       );
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
 
   return (
@@ -68,10 +69,8 @@ const Notification = () => {
 <div>
 
 <ul>
-        {notifications.map((notification) => (
-          <li key={notification.id} onClick={() => handleNotificationClick(notification.id)}>
-            {notification.notification} {notification.isRead ? '(read)' : ''}
-          </li>
+        {notifications.map((item) => (
+            <NotificationItem notification={item} key={item.id}/>
         ))}
       </ul>
 
