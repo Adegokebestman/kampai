@@ -27,23 +27,7 @@ const Notification = () => {
     fetchNotifications();
   }, []);
 
-  // const handleNotificationClick = async (notifications) => {
-  //   const token = localStorage.getItem('accessToken');
-  //   // Send POST request to mark notification as read
-  //   console.log(notifications)
-  //   try {
-  //     const response = await axios.post(READNOTIFICATION, { notificationId: notifications},
-  //        {
-  //         headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       }
-  //     },
-  //       );
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+
 
 
   return (
@@ -64,15 +48,16 @@ const Notification = () => {
 
 <div class="mt-10 flex flex-wrap lg:flex-nowrap justify-center">
 <div class="bg-white boxShadow dark:text-gray-200 dark:bg-secondary-dark-bg h-22 rounded-xl w-80 lg:w-11/12 p-8 pt-9 m-3 ">
-<div class="flex font-semibold justify-between items-center">
+<div class="flex font-semibold justify-between items-center ">
 <BsChatLeftText className='text-[#FF7E20] text-4xl'/>
 <div>
 
-<ul>
+<div>
+
         {notifications.map((item) => (
             <NotificationItem notification={item} key={item.id}/>
         ))}
-      </ul>
+      </div>
 
 {/* <h3 className="md:text-2xl text-xl inline-block  ml-8">check your messages</h3> */}
 
@@ -80,7 +65,7 @@ const Notification = () => {
 <div>
 
 <Link to='../OrderTrack'>
-<button className=" text-white bg-[#FF7E20] px-2 p-3 hover:drop-shadow-xl md:px-10">Read</button>
+<button className=" text-white bg-[#FF7E20] px-2 p-3 hover:drop-shadow-xl md:px-10">GO</button>
 </Link>
 
 </div>

@@ -82,7 +82,7 @@ const Login = () => {
 		if (!password) {
 		  setPasswordError('Password is required');
 		  return false;
-		} else if (password.length < 8) {
+		} else if (password.length < 6) {
 		  setPasswordError('Password must be at least 8 characters');
 		  return false;
 		} else {

@@ -48,7 +48,7 @@ const Navbar = () => {
       headers: { Authorization: `Bearer ${accessToken}` }
     }).then((response) => {
       console.log('Notification:',response)
-      setNotificationCount(response.data.allNotifications);
+      setNotificationCount(response.data.allNotifications.filter((item) => item.status == "unread" ));
     });
   }, []);
 
