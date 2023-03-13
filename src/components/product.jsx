@@ -1,42 +1,63 @@
-import React, { useContext } from "react";
-import { BsPlusLg, BsFillChatRightDotsFill } from "react-icons/bs";
-import { FaMinus } from "react-icons/fa";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import "./Order.css";
-import CartContext from "../contexts/Cart/CartContext";
+import React, { useContext, useEffect, useState } from 'react';
+import { BsPlusLg, BsFillChatRightDotsFill } from 'react-icons/bs';
+import { FaMinus } from 'react-icons/fa';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import './Order.css';
+import CartContext from '../contexts/Cart/CartContext';
+import { getSingleProduct } from '../api/axios';
 
 const Product = ({ product }) => {
-  const { addToCart, increase, cartItems,removeFromCart, sumItems, itemCount } =  useContext(CartContext);
+	const {
+		addToCart,
+		increase,
+		cartItems,
+		removeFromCart,
+		sumItems,
+		itemCount,
+	} = useContext(CartContext);
+	const [singleProduct, setSingleProduct] = useState();
 
-  //Check whether the product is in the cart or not
-  const isInCart = (product) => {
-    return !!cartItems.find((item) => item._id === product._id);
-  };
+	// Add an icon that opens a modal when clicked
+	// this is the handleClick of the Icon
+	const handleClick = async () => {
+		const accessToken = localStorage.getItem('accessToken');
+		const data = await getSingleProduct(accessToken, product._id);
+		console.log(data);
+	};
 
-  return (
-    <ul className="flex container flex-row bg-white text-center boxShadow  dark:text-gray-200 dark:bg-secondary-dark-bg md:w-full h-32 p-4 rounded-2xl">
-      <li className="flex-item pr-2 md:pr-4">
-        <img src={product.photo} />
-      </li>
-      {/* <li className="mr-2 mt-4 md:mr-20 md:mt-8"> {product.id}</li> */}
+	//Check whether the product is in the cart or not
+	const isInCart = (product) => {
+		return !!cartItems.find((item) => item._id === product._id);
+	};
 
-      <li className="pt-4 leading-5 mr-2 md:font-medium p-2 md:p-8 md:mr-8 w-10 md:w-44">
-        {product.productName} <br />
-      </li>
-      <li className="status mt-8"><b> Available </b>
+	return (
+		<ul className='flex container flex-row bg-white text-center boxShadow  dark:text-gray-200 dark:bg-secondary-dark-bg md:w-full h-32 p-4 rounded-2xl'>
+			<li className='flex-item pr-2 md:pr-4'>
+				<img src={product.photo} />
+			</li>
+			{/* <li className="mr-2 mt-4 md:mr-20 md:mt-8"> {product.id}</li> */}
 
-       <br/>{product.available} </li>
+			<li className='pt-4 leading-5 mr-2 md:font-medium p-2 md:p-8 md:mr-8 w-10 md:w-44'>
+				{product.productName} <br />
+			</li>
+			<li className='status mt-8'>
+				<b> Available </b>
+				<br />
+				{product.available}{' '}
+			</li>
 
-      <li className="ml-2 mr-3 md:ml-8 md:mr-24 mt-8 md:font-medium">${product.price} </li>
+			<li className='ml-2 mr-3 md:ml-8 md:mr-24 mt-8 md:font-medium'>
+				${product.price}{' '}
+			</li>
 
-      <span className="rounded-full border-white bg-[#D0F4D0] text-[#147D30] mt-6 mr-5 pt-2 pb-4 pr-2 pl-2 mb-8
-      md:mt-8 md:pt-2 md:mr-10 md:mb-8 md:pb-8 md:pr-4  md:pl-4 md:rounded-full ">
-        {product.status? 'available' : 'unavailable'}
-      </span>
+			<span
+				className='rounded-full border-white bg-[#D0F4D0] text-[#147D30] mt-6 mr-5 pt-2 pb-4 pr-2 pl-2 mb-8
+      md:mt-8 md:pt-2 md:mr-10 md:mb-8 md:pb-8 md:pr-4  md:pl-4 md:rounded-full '
+			>
+				{product.status ? 'available' : 'unavailable'}
+			</span>
 
-
-
-        {/* {isInCart (product) && (
+			{/* {isInCart (product) && (
           <button
         onClick={() => {
           increase(product);
@@ -54,27 +75,29 @@ const Product = ({ product }) => {
         <FaMinus />
       </button> */}
 
-      <button class=" mr-8 ml-8 text-[#FF7E20] text-2xl ">
-        <BsFillChatRightDotsFill />
-      </button>
+			<button class=' mr-8 ml-8 text-[#FF7E20] text-2xl '>
+				<BsFillChatRightDotsFill />
+			</button>
 
+			{isInCart(product) && (
+				<button
+					// onClick={() => addToCart(product)}
+					className='cartBtn2 text-sm md:text-lg'
+				>
+					{/* Add More */} Added to cart
+				</button>
+			)}
 
-        {isInCart(product) && (
-          <button
-            // onClick={() => addToCart(product)}
-            className="cartBtn2 text-sm md:text-lg"
-          >
-            {/* Add More */} Added to cart
-          </button>
-        )}
-
-      {!isInCart(product) && (
-        <button onClick={() => addToCart(product)} className="cartBtn text-sm md:text-xl">
-          Add to Cart
-        </button>
-      )}
-    </ul>
-  );
+			{!isInCart(product) && (
+				<button
+					onClick={() => addToCart(product)}
+					className='cartBtn text-sm md:text-xl'
+				>
+					Add to Cart
+				</button>
+			)}
+		</ul>
+	);
 };
 
 export default Product;
