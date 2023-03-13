@@ -5,11 +5,6 @@ import { FaEdit } from 'react-icons/fa';
 import { BsBoxSeam } from 'react-icons/bs';
 import { BiCurrentLocation } from 'react-icons/bi';
 import { useStateContext } from '../contexts/ContextProvider';
-import {
-	earningData,
-	SparklineAreaData,
-	ecomPieChartData,
-} from '../data/dummy';
 import { Button } from '../components';
 import { useEffect, useState } from 'react';
 
