@@ -47,10 +47,7 @@ const Notification = () => {
 </div>
 
 <div class="mt-10 flex flex-wrap lg:flex-nowrap justify-center">
-<div class="bg-white boxShadow dark:text-gray-200 dark:bg-secondary-dark-bg h-22 rounded-xl w-80 lg:w-11/12 p-8 pt-9 m-3 ">
-<div class="flex font-semibold justify-between items-center ">
-<BsChatLeftText className='text-[#FF7E20] text-4xl'/>
-<div>
+
 
 <div>
 
@@ -63,14 +60,6 @@ const Notification = () => {
 
 </div>
 <div>
-
-<Link to='../OrderTrack'>
-<button className=" text-white bg-[#FF7E20] px-2 p-3 hover:drop-shadow-xl md:px-10">GO</button>
-</Link>
-
-</div>
-</div>
-</div>
 </div>
 </div>
   )
